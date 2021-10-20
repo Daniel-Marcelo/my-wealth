@@ -1,0 +1,21 @@
+<div class="dm-p-12" *ngIf="item">
+  <form #createItemForm="ngForm" (ngSubmit)="createItem()">
+    <ion-item class="dm-mb-12">
+      <ion-label position="floating">Name</ion-label>
+      <ion-input required name="name" [(ngModel)]="item.name" ngDefaultControl></ion-input>
+    </ion-item>
+    <ion-item class="dm-mb-12">
+      <ion-label position="floating">Category</ion-label>
+      <ion-select required name="category" [(ngModel)]="item.category" placeholder="Select Category" ngDefaultControl>
+        <ion-select-option *ngFor="let category of categories | async">
+          {{ category.name }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item class="dm-mb-12">
+      <ion-label position="floating">Amount</ion-label>
+      <ion-input required type="number" name="amount" [(ngModel)]="item.amount" ngDefaultControl></ion-input>
+    </ion-item>
+    <ion-button [disabled]="!item.name || !item.amount || !item.category" type="submit" size="large" expand="block">Create new item</ion-button>
+  </form>
+</div>
