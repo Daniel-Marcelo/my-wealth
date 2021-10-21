@@ -1,0 +1,9 @@
+<div class="dm-p-12">
+  <form #createAccountForm="ngForm" (ngSubmit)="createAccount()">
+    <ion-item class="dm-mb-12">
+      <ion-label position="floating">Platform/ Account Name</ion-label>
+      <ion-input required name="name" [(ngModel)]="account.name" ngDefaultControl></ion-input>
+    </ion-item>
+    <ion-button [disabled]="!account.name" type="submit" size="large" expand="block">Create Platform Account</ion-button>
+  </form>
+</div>

@@ -1,0 +1,9 @@
+<div class="dm-p-12">
+  <form #createCategoryForm="ngForm" (ngSubmit)="createCategory()">
+    <ion-item class="dm-mb-12">
+      <ion-label position="floating">Item Category Name</ion-label>
+      <ion-input required name="name" [(ngModel)]="category.name" ngDefaultControl></ion-input>
+    </ion-item>
+    <ion-button [disabled]="!category.name" type="submit" size="large" expand="block">Create Item Category</ion-button>
+  </form>
+</div>

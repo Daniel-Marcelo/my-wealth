@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Category } from './category.model';
 import { BaseFirestore } from '../base-firestore';
+import { AccountType } from './account-type.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryService extends BaseFirestore<Category> {
+export class AccountTypeService extends BaseFirestore<AccountType> {
 
-  constructor(db: AngularFirestore) {
-    super(db, "category")
+  constructor(db: AngularFirestore) { 
+    super(db, "AccountType")
   }
 }

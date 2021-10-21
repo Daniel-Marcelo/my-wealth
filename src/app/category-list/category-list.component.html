@@ -1,0 +1,17 @@
+<new-category></new-category>
+
+<div class="dm-p-12 dm-text-center">
+  <div class="dm-mb-4">CATEGORIES</div>
+  <ng-container *ngIf="categories$ | async; let categories">
+    <ng-container *ngIf="categories?.length > 0">
+      <ion-list>
+        <ng-container *ngFor="let category of categories">
+          <ion-item>
+            <ion-icon color="danger" (click)="delete(category.id);" class="trash dm-cursor-pointer" slot="end" name="trash"></ion-icon>
+            <ion-label>{{category.name}}</ion-label>
+          </ion-item>
+        </ng-container>
+      </ion-list>
+    </ng-container>
+  </ng-container>
+</div>

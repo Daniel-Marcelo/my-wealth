@@ -7,6 +7,8 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { NewItemModule } from '../new-item/new-item.module';
+import { NewCategoryModule } from '../new-category/new-category.module';
+import { CategoryListModule } from '../category-list/category-list.module';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import { NewItemModule } from '../new-item/new-item.module';
     FormsModule,
     ExploreContainerComponentModule,
     Tab1PageRoutingModule,
-    NewItemModule
+    NewItemModule,
+    NewCategoryModule,
+    CategoryListModule
   ],
   declarations: [Tab1Page]
 })

@@ -1,0 +1,17 @@
+<new-account></new-account>
+
+<div class="dm-p-12 dm-text-center">
+  <div class="dm-mb-4">ACCOUNTS</div>
+  <ng-container *ngIf="accounts$ | async; let accounts">
+    <ng-container *ngIf="accounts?.length > 0">
+      <ion-list>
+        <ng-container *ngFor="let account of accounts">
+          <ion-item>
+            <ion-icon color="danger" (click)="delete(account.id);" class="trash dm-cursor-pointer" slot="end" name="trash"></ion-icon>
+            <ion-label>{{account.name}}</ion-label>
+          </ion-item>
+        </ng-container>
+      </ion-list>
+    </ng-container>
+  </ng-container>
+</div>
