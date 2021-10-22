@@ -1,21 +1,64 @@
 <div class="dm-p-12" *ngIf="item">
   <form #createItemForm="ngForm" (ngSubmit)="createItem()">
-    <ion-item class="dm-mb-12">
+    <!-- <ion-item class="dm-mb-12">
       <ion-label position="floating">Name</ion-label>
       <ion-input required name="name" [(ngModel)]="item.name" ngDefaultControl></ion-input>
-    </ion-item>
+    </ion-item> -->
     <ion-item class="dm-mb-12">
-      <ion-label position="floating">Category</ion-label>
-      <ion-select required name="category" [(ngModel)]="item.category" placeholder="Select Category" ngDefaultControl>
-        <ion-select-option *ngFor="let category of categories | async">
-          {{ category.name }}
+      <ion-label position="floating">Account</ion-label>
+      <ion-select required name="account" (ionChange)="item.account.name = $event.detail.value"
+        placeholder="Select Account" ngDefaultControl>
+        <ion-select-option *ngFor="let account of accounts$ | async">
+          {{account.name}}
         </ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item class="dm-mb-12">
+      <ion-label position="floating">Category</ion-label>
+      <ion-select required name="category" (ionChange)="item.category.name = $event.detail.value"
+        placeholder="Select Category" ngDefaultControl>
+        <ion-select-option *ngFor="let category of categories$ | async">
+          {{category.name}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ng-container *ngIf="item?.category?.name?.toUpperCase().trim() === 'INVESTMENT'">
+      <ion-item class="dm-mb-12">
+        <ion-label position="floating">Ticker</ion-label>
+        <ion-input required type="text" name="ticker" [(ngModel)]="item.ticker" ngDefaultControl></ion-input>
+      </ion-item>
+      <ion-item class="dm-mb-12">
+        <ion-label position="floating">Initial investment</ion-label>
+        <ion-input required type="number" name="initialInvestment" [(ngModel)]="item.initialInvestment"
+          ngDefaultControl></ion-input>
+      </ion-item>
+      <ion-item class="dm-mb-12">
+        <ion-label position="floating">Shares Purchased</ion-label>
+        <ion-input required type="number" name="sharesPurchased" [(ngModel)]="item.sharesPurchased" ngDefaultControl>
+        </ion-input>
+      </ion-item>
+    </ng-container>
+    <ng-container *ngIf="item?.category?.name?.toUpperCase().trim() === 'CRYPTO'">
+      <ion-item class="dm-mb-12">
+        <ion-label position="floating">Crypto Ticker</ion-label>
+        <ion-input required type="text" name="cryptoTicker" [(ngModel)]="item.cryptoTicker" ngDefaultControl></ion-input>
+      </ion-item>
+      <ion-item class="dm-mb-12">
+        <ion-label position="floating">Initial investment</ion-label>
+        <ion-input required type="number" name="initialInvestment" [(ngModel)]="item.initialInvestment"
+          ngDefaultControl></ion-input>
+      </ion-item>
+      <ion-item class="dm-mb-12">
+        <ion-label position="floating">Quantity Purchased</ion-label>
+        <ion-input required type="number" name="sharesPurchased" [(ngModel)]="item.sharesPurchased" ngDefaultControl>
+        </ion-input>
+      </ion-item>
+    </ng-container>
+    <ion-item class="dm-mb-12">
       <ion-label position="floating">Amount</ion-label>
       <ion-input required type="number" name="amount" [(ngModel)]="item.amount" ngDefaultControl></ion-input>
     </ion-item>
-    <ion-button [disabled]="!item.name || !item.amount || !item.category" type="submit" size="large" expand="block">Create new item</ion-button>
+    <ion-button [disabled]="!item.account.name || !item.amount || !item.category.name" type="submit" size="large"
+      expand="block">Create new wealth item</ion-button>
   </form>
 </div>

@@ -1,0 +1,17 @@
+<new-account-type></new-account-type>
+
+<div class="dm-p-12 dm-text-center">
+  <div class="dm-mb-4">ACCOUNT TYPES</div>
+  <ng-container *ngIf="accountTypes$ | async; let accountTypes">
+    <ng-container *ngIf="accountTypes?.length > 0">
+      <ion-list>
+        <ng-container *ngFor="let accountType of accountTypes">
+          <ion-item>
+            <ion-icon color="danger" (click)="delete(accountType.id);" class="trash dm-cursor-pointer" slot="end" name="trash"></ion-icon>
+            <ion-label>{{accountType.name}}</ion-label>
+          </ion-item>
+        </ng-container>
+      </ion-list>
+    </ng-container>
+  </ng-container>
+</div>

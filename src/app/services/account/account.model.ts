@@ -1,10 +1,11 @@
+import { AccountType } from "../account-type/account-type.model";
 import { Category } from "../category/category.model";
 
 export interface Account {
     name: string,
-    category: Category
+    type: AccountType
 }
 
-export const generateAccount = (name?: string, category?: Category) => ({
-    name, category
+export const generateAccount = (name?: string, type = {} as AccountType) => ({
+    name, type
 })

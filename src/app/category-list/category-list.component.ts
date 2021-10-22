@@ -18,6 +18,6 @@ export class CategoryListComponent implements OnInit {
   }
 
   async delete(id: string) {
-    await this.categoryService.delete(id)
+    await this.categoryService.deleteWithToast(id, "Category Deleted")
   }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ToastController } from '@ionic/angular';
 import { BaseFirestore } from '../base-firestore';
 import { Item } from './item.model';
 
@@ -8,7 +9,7 @@ import { Item } from './item.model';
 })
 export class ItemService extends BaseFirestore<Item> {
 
-  constructor(db: AngularFirestore) {
-    super(db, "item")
-   }
+  constructor(db: AngularFirestore, toastController: ToastController) {
+    super(db, toastController, "Item")
+  }
 }

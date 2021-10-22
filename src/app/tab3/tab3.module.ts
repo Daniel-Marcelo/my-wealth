@@ -8,6 +8,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab3PageRoutingModule } from './tab3-routing.module';
 import { NewAccountTypeModule } from '../new-account-type/new-account-type.module';
+import { AccountTypeListModule } from '../account-type-list/account-type-list.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { NewAccountTypeModule } from '../new-account-type/new-account-type.modul
     ExploreContainerComponentModule,
     RouterModule.forChild([{ path: '', component: Tab3Page }]),
     Tab3PageRoutingModule,
-    NewAccountTypeModule
+    NewAccountTypeModule,
+    AccountTypeListModule
   ],
   declarations: [Tab3Page]
 })

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { generate, Observable } from 'rxjs';
+import { Account } from '../services/account/account.model';
+import { AccountService } from '../services/account/account.service';
 import { Category } from '../services/category/category.model';
 import { CategoryService } from '../services/category/category.service';
 import { generateItem, Item } from '../services/item/item.model';
@@ -13,24 +15,21 @@ import { ItemService } from '../services/item/item.service';
 })
 export class NewItemComponent implements OnInit {
 
-  categories: Observable<Category[]>;
+  accounts$: Observable<Account[]>
+  categories$: Observable<Category[]>;
   item = generateItem();
 
-  constructor(private categoryService: CategoryService, 
-    private itemService: ItemService, 
-    private toastController: ToastController) {
-    this.categories = this.categoryService.all$
-  }
+  constructor(private categoryService: CategoryService,
+    private itemService: ItemService,
+    private accountService: AccountService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.categories$ = this.categoryService.all$;
+    this.accounts$ = this.accountService.all$;
+  }
 
   async createItem() {
-    await this.itemService.create(this.item);
-    const toast = await this.toastController.create({
-      message: 'Created item.',
-      duration: 2000
-    });
-    await toast.present();
+    await this.itemService.createWithToast(this.item, "Item Created");
+    this.item = generateItem();
   }
-
 }

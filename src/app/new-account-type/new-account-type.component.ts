@@ -16,12 +16,7 @@ export class NewAccountTypeComponent implements OnInit {
   ngOnInit() {}
 
   async createAccountType() {
-    await this.accountTypeService.create(this.accountType)
-    const toast = await this.toastController.create({
-      message: 'Created Account Type.',
-      duration: 2000
-    });
-    await toast.present();
+    await this.accountTypeService.createWithToast(this.accountType, "Account Type Created")
     this.accountType = generateAccountType();
   }
 

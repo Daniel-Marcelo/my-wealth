@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ToastController } from '@ionic/angular';
 import { BaseFirestore } from '../base-firestore';
 import { AccountType } from './account-type.model';
 
@@ -8,7 +9,7 @@ import { AccountType } from './account-type.model';
 })
 export class AccountTypeService extends BaseFirestore<AccountType> {
 
-  constructor(db: AngularFirestore) { 
-    super(db, "AccountType")
+  constructor(db: AngularFirestore, toastController: ToastController) { 
+    super(db, toastController, "AccountType")
   }
 }

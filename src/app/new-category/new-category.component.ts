@@ -16,12 +16,7 @@ export class NewCategoryComponent implements OnInit {
   ngOnInit() {}
 
   async createCategory() {
-    await this.categoryService.create(this.category)
-    const toast = await this.toastController.create({
-      message: 'Created Category.',
-      duration: 2000
-    });
-    await toast.present();
+    await this.categoryService.createWithToast(this.category, "Category Created");
     this.category = generateCategory();
   }
 

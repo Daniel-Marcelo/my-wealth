@@ -17,4 +17,7 @@ export class AccountListComponent implements OnInit {
     this.accounts$ = this.accountService.all$;
   }
 
+  delete(id: string) {
+    this.accountService.deleteWithToast(id, "Account Deleted")
+  }
 }

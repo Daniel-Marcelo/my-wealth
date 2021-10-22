@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
+import { Observable } from 'rxjs';
+import { AccountType } from '../services/account-type/account-type.model';
+import { AccountTypeService } from '../services/account-type/account-type.service';
 import { Account, generateAccount } from '../services/account/account.model';
 import { AccountService } from '../services/account/account.service';
 
@@ -10,19 +13,16 @@ import { AccountService } from '../services/account/account.service';
 })
 export class NewAccountComponent implements OnInit {
 
-  account = {} as Account;
-  constructor(private accountService: AccountService, private toastController: ToastController) { }
+  account = { name: "", type: { name: "" }};
+  accountTypes$: Observable<AccountType[]>
+  constructor(private accountService: AccountService, private accountTypeService: AccountTypeService, private toastController: ToastController) { }
 
-  ngOnInit() {  }
-
-  async createAccount() {
-    this.accountService.create(this.account)
-    const toast = await this.toastController.create({
-      message: 'Created Account.',
-      duration: 2000
-    });
-    await toast.present();
-    this.account = generateAccount();
+  ngOnInit() {  
+    this.accountTypes$ = this.accountTypeService.all$;
   }
 
+  async createAccount() {
+    this.accountService.createWithToast(this.account, "Account Created")
+    this.account = generateAccount();
+  }
 }
