@@ -54,10 +54,12 @@
         </ion-input>
       </ion-item>
     </ng-container>
+    <ng-container *ngIf="item?.category?.name?.toUpperCase().trim() === 'BANK'">
     <ion-item class="dm-mb-12">
       <ion-label position="floating">Amount</ion-label>
       <ion-input required type="number" name="amount" [(ngModel)]="item.amount" ngDefaultControl></ion-input>
     </ion-item>
+    </ng-container>
     <ion-button [disabled]="!item.account.name || !item.amount || !item.category.name" type="submit" size="large"
       expand="block">Create new wealth item</ion-button>
   </form>
